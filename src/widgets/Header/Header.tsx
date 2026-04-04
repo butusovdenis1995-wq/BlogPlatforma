@@ -34,7 +34,7 @@ export default function Header() {
           </Link>
           <Link to={AppRoute.EditProfile} className={styles.linkProfile}>
             {user.username}
-            <img src={user.logo} alt="Logo" />
+            <img src={user.image} alt="Logo" />
           </Link>
           <button onClick={handleLogout} className={styles.buttonLogOut}>
             Log Out

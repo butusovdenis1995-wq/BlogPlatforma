@@ -2,6 +2,8 @@ import { Heart } from "lucide-react";
 import styles from "./ButtonLike.module.scss";
 import useLikeButton from "@/shared/hooks/useLikeButton";
 import { isAuthorized } from "@/shared/utils/isAuthorized";
+import { useSelector } from "react-redux";
+import { RootState } from "@/shared/config/store";
 
 interface ButtonLikeProps {
   quantityLike: number;
@@ -9,10 +11,9 @@ interface ButtonLikeProps {
 }
 
 export default function ButtonLike({ quantityLike, slug }: ButtonLikeProps) {
-  const { toggleLike, Favorited } = useLikeButton();
-
-  const isFavorited = Favorited?.includes(slug) ?? false;
-  console.log(isAuthorized());
+  const { toggleLike } = useLikeButton();
+  const favorited = useSelector((state: RootState) => state.likes.favorited);
+  const isFavorited = favorited?.includes(slug);
 
   return (
     <div className={styles.wrapperLike}>
