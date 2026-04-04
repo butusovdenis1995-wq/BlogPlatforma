@@ -1,0 +1,72 @@
+@use "@app/styles/variables.scss" as *;
+
+.header {
+  height: 80px;
+  background-color: $white-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  .title {
+    font-size: 18px;
+    color: $black-color;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+  }
+  .linkSignUp {
+    background-color: $white-color;
+    font-size: 18px;
+    width: 112px;
+    height: 50px;
+    border: 1px solid $green-color;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $green-color;
+  }
+  .linkSignIn {
+    border: none;
+    color: $black-color;
+  }
+  .createArticle {
+    width: 112px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid $green-color;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $green-color;
+  }
+  .linkProfile {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 12px;
+    color: $black-color;
+  }
+  .buttonLogOut {
+    width: 110px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid $black-color;
+    background-color: $white-color;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  img {
+    width: 46px;
+    height: 46px;
+  }
+}

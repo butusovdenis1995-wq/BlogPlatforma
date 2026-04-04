@@ -1,0 +1,9 @@
+@use "@app/styles/variables.scss" as *;
+.tag {
+  display: inline-block;
+  padding: 2px 4px;
+  border: 1px solid $black-color;
+  border-radius: 2px;
+  font-size: 12px;
+  margin-right: 5px;
+}

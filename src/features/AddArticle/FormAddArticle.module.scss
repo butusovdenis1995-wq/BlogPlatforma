@@ -1,0 +1,88 @@
+@use "@app/styles/mixins.scss" as *;
+@use "@app/styles/variables.scss" as *;
+
+.addArticleWrapper {
+  width: 938px;
+  padding: 48px 0;
+  p {
+    margin: 0 auto;
+    font-size: $font-size-20;
+    font-weight: $font-weight-500;
+  }
+  .inputTitle {
+    text-align: start;
+    width: 874px;
+    height: 40px;
+    @include input-style-article;
+  }
+  .textarea {
+    width: 874px;
+    height: 168px;
+    resize: none;
+    @include input-style-article;
+  }
+  label {
+    margin-top: 21px;
+  }
+  .listTags {
+    display: flex;
+    column-gap: 17px;
+
+    position: relative;
+  }
+  .tags {
+    @include input-style-article;
+    width: 300px;
+    height: 40px;
+    font-size: $font-size-16;
+    font-weight: $font-weight-400;
+  }
+  .delete {
+    @include center-text-align;
+    width: 120px;
+    height: 40px;
+    border: 1px solid $red-color;
+    border-radius: 5px;
+    color: $red-color;
+    font-size: $font-size-16;
+    font-weight: $font-weight-400;
+    background-color: transparent;
+  }
+  .inputTags {
+    @include input-style-article;
+    width: 300px;
+    height: 40px;
+  }
+  .addTags {
+    @include center-text-align;
+    width: 136px;
+    height: 40px;
+    border: 1px solid $blue-color;
+    border-radius: 5px;
+    color: $blue-color;
+    font-size: $font-size-16;
+    font-weight: $font-weight-400;
+    background-color: transparent;
+  }
+  .send {
+    width: 320px;
+    height: 40px;
+    margin-top: 21px;
+    border: none;
+    border-radius: 5px;
+    background-color: $blue-color;
+    color: $white-color;
+    font-size: $font-size-16;
+    font-weight: $font-weight-400;
+  }
+  .duplicatedWarning {
+    @include center-text-align;
+    width: 250px;
+    height: 40px;
+    border: 1px solid $red-color;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    left: 350px;
+  }
+}

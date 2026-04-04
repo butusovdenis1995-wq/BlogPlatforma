@@ -1,0 +1,62 @@
+@use "@app/styles/variables.scss" as *;
+
+.articleWrapper {
+  width: 940px;
+  height: 140px;
+  display: flex;
+  padding: 15px;
+  margin: 0 auto;
+  position: relative;
+  .blockTitle {
+    display: flex;
+    align-items: center;
+    column-gap: 13px;
+  }
+  .title {
+    font-size: $font-size-20;
+    color: $blue-color;
+    font-weight: $font-weight-400;
+  }
+  div:first-child {
+    margin-right: auto;
+  }
+  .articleText {
+    display: inline-block;
+    font-size: $font-size-12;
+  }
+  .authorName {
+    font-size: $font-size-18;
+  }
+  img {
+    width: 46px;
+    height: 46px;
+    margin-left: 12px;
+  }
+  .date {
+    font-size: $font-size-12;
+  }
+  .spin {
+    margin: 0 auto;
+  }
+  .button {
+    display: flex;
+    column-gap: 12px;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+  }
+  .buttonDelete {
+    width: 78px;
+    height: 32px;
+    border: 1px solid $red-color;
+    font-size: $font-size-14;
+    font-weight: $font-weight-400;
+  }
+  .buttonEdit {
+    width: 65px;
+    height: 32px;
+    border: 1px solid $green-color;
+    font-size: $font-size-14;
+    font-weight: $font-weight-400;
+  }
+}

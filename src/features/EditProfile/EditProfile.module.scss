@@ -1,0 +1,23 @@
+@use "@app/styles/variables.scss" as *;
+@use "@app/styles/mixins.scss" as *;
+
+.editFormWrapper {
+  width: 384px;
+  height: 498px;
+  .input {
+    @include input-style;
+    font-weight: $font-weight-400;
+    font-size: $font-size-16;
+  }
+  button {
+    @include button-style;
+  }
+  p {
+    margin: 0 auto;
+    font-size: $font-size-20;
+    font-weight: $font-weight-500;
+  }
+  .spin {
+    margin-top: 200px;
+  }
+}

@@ -1,0 +1,28 @@
+@use "@app/styles/variables.scss" as *;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a,
+Link {
+  text-decoration: none;
+}
+
+main {
+  background-color: $grey-color;
+  display: flex;
+  flex-direction: column;
+  row-gap: 26px;
+  padding: 26px 0;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+// #root {
+//   width: 100vw;
+//   background-color: #f4f8ff;
+//   margin: 0 auto;
+//   padding-bottom: 50px;
+// }

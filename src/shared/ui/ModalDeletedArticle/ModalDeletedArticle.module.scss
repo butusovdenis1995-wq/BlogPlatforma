@@ -1,0 +1,42 @@
+@use "@app/styles/variables.scss" as *;
+
+.modalWrapper {
+  width: 246px;
+  height: 104px;
+  position: fixed;
+  z-index: 100;
+  top: 137px;
+  left: 1350px;
+  padding: 12px 16px;
+  span {
+    font-size: $font-size-14;
+    font-weight: $font-weight-400;
+    margin: 0 25px 0 25px;
+  }
+  .Warning {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+  }
+  .divButton {
+    margin-top: auto;
+    margin-left: auto;
+  }
+  .yesButton {
+    width: 39px;
+    height: 24px;
+    background-color: $blue-color;
+    border: none;
+    border-radius: 4px;
+    color: $white-color;
+  }
+  .noButton {
+    width: 34px;
+    height: 24px;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid $grey-color5;
+    color: $grey-color8;
+    margin-right: 8px;
+  }
+}

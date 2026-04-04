@@ -1,0 +1,27 @@
+@use "@app/styles/variables.scss" as *;
+@use "@app/styles/mixins.scss" as *;
+
+.signInWrapper {
+  width: 384px;
+  height: 374px;
+  margin: 60px auto;
+  p {
+    @include p-style;
+  }
+  label {
+    margin-top: 12px;
+  }
+  input {
+    @include input-style;
+  }
+  button {
+    @include button-style;
+  }
+  p:last-of-type {
+    font-size: $font-size-12;
+    color: $grey-color7;
+  }
+  .link {
+    color: $blue-color;
+  }
+}

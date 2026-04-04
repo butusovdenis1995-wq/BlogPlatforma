@@ -1,0 +1,48 @@
+@use "@app/styles/variables.scss" as *;
+@use "@app/styles/mixins.scss" as *;
+
+.signUpWrapper {
+  width: 384px;
+  min-height: 599px;
+  p {
+    @include p-style;
+  }
+  label {
+    margin-top: 12px;
+  }
+  input {
+    @include input-style;
+  }
+  button {
+    @include button-style;
+  }
+  .checkbox {
+    display: flex;
+    margin-top: 21px;
+    padding-top: 8px;
+    border-top: 1px solid $grey-color4;
+  }
+  .inputCheckbox {
+    width: 16px;
+    height: 16px;
+    margin: 12px 8px 0 0;
+  }
+  .labelCheckbox {
+    font-size: $font-size-14;
+    color: $grey-color8;
+  }
+  p:last-of-type {
+    font-size: $font-size-12;
+    color: $grey-color7;
+  }
+  .link {
+    color: $blue-color;
+  }
+  span {
+    font-size: 14px;
+    color: $red-color;
+  }
+  .inputWarning {
+    border: 1px solid $red-color;
+  }
+}

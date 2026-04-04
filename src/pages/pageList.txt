@@ -1,0 +1,71 @@
+Страницы приложения:
+- Страница со списком статей / и / articles
+- Страница одной статьи /articles/{slug}
+- Авторизация
+- Логин
+
+Шаги по задаче:
+Кнопка лайков - \/
+1. Сделать пагинацию. Запрос при смене страниц \/ (логика потом)
+2. Индикаторы загрузки и ошибки
+3. Логика авторизации и логина
+4. Заггрузка статей Api
+5. Страница с полным текстом статьи 
+
+получить все статьи get https://blog-platform.kata.academy/api/articles?offset=0&limit=10  
+
+user
+: 
+email
+: 
+"butusov@gmail.com"
+token
+: 
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YzUxZWE4OGEyODNmMWIwMDdiNDZhYiIsInVzZXJuYW1lIjoiZGVuaXMiLCJleHAiOjE3Nzk3MTAxMjAsImlhdCI6MTc3NDUyNjEyMH0.99m1DFAMHI6_JqrQP83Op4Q63CBfG7NlM1OQc8pv5fU"
+username
+: 
+"denis"
+
+
+src/
+├── app/
+│   ├── store.ts                    # 1. Здесь подключаем все API к store
+│   └── providers/
+│       └── StoreProvider.tsx
+│
+├── shared/
+│   └── api/
+│       └── baseApi.ts              # 2. Здесь базовая настройка RTK Query
+│
+├── entities/
+│   └── article/
+│       ├── api/
+│       │   └── articleApi.ts       # 3. Запросы на получение статей
+│       ├── model/
+│       │   └── types.ts            # Типы: IArticle, IAuthor
+│       └── ui/
+│           └── ArticleCard.tsx     # UI компонент карточки статьи
+│
+└── features/
+    └── like-article/
+        ├── api/
+        │   └── likeApi.ts          # 4. Мутация для лайка статьи
+        └── ui/
+            └── LikeButton.tsx      # Кнопка, использующая хук из likeApi
+
+
+
+
+entities/
+└── article/              # название сущности в kebab-case
+    ├── index.ts          # публичный API
+    ├── ui/
+    │   ├── ArticleCard.tsx      # компонент
+    │   ├── ArticleCard.module.scss
+    │   └── index.ts             # экспорт компонента
+    ├── api/
+    │   ├── articleApi.ts
+    │   └── index.ts
+    └── model/
+        ├── types.ts
+        └── index.ts

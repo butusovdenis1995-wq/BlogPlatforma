@@ -1,0 +1,20 @@
+@use "@app/styles/variables.scss" as *;
+
+.wrapperLike {
+  width: 22px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+  .heart {
+    width: 16px;
+    height: 16px;
+  }
+  .buttonLike {
+    background-color: transparent;
+    border: none;
+  }
+  span {
+    font-size: $font-size-12;
+  }
+}
