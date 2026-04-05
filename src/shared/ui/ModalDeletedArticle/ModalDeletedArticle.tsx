@@ -16,6 +16,7 @@ export default function ModalDeletedArticle({
   setIsOpen,
 }: ModalDeletedArticleProps) {
   const { handleDelete } = useDeleteArticle();
+
   if (isOpen) {
     return ReactDOM.createPortal(
       <WrapperCard className={styles.modalWrapper}>

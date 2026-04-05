@@ -27,9 +27,6 @@ export default function ArticleTitle({
 }: ArticleTitleProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const favor = [];
-  favor.push(article);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

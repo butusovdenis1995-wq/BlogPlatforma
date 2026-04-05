@@ -3,11 +3,22 @@
 .modalWrapper {
   width: 246px;
   height: 104px;
-  position: fixed;
+  position: absolute;
   z-index: 100;
   top: 137px;
   left: 1350px;
   padding: 12px 16px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-width: 8px 10px 8px 0;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+  }
   span {
     font-size: $font-size-14;
     font-weight: $font-weight-400;
