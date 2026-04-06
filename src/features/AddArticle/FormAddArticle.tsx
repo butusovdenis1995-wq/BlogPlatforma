@@ -1,14 +1,14 @@
 import WrapperCard from "@/shared/ui/WrapperCard";
 import Form from "@/shared/ui/WrapperForm";
 import styles from "./FormAddArticle.module.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAddArticle } from "./useAddArticle";
 import { IFormAddArticleT } from "./types";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/shared/config/store";
 import { useLocation } from "react-router-dom";
-import { addTag, clearForm, deleteTag } from "./articleFormSlice";
+import { addTag, deleteTag } from "./articleFormSlice";
 import WrapperSpin from "@/shared/ui/WrapperSpin/WrapperSpin";
 
 export default function FormAddArticle() {
@@ -20,13 +20,6 @@ export default function FormAddArticle() {
 
   const modeForm = location.state.path;
   const slug = location.state.slug;
-
-  useEffect(() => {
-    if (modeForm === "Create") {
-      console.log("dispatch");
-      dispatch(clearForm());
-    }
-  }, [modeForm, dispatch]);
 
   const {
     register,
@@ -43,8 +36,8 @@ export default function FormAddArticle() {
 
   function addTags() {
     if (currentTag.trim()) {
+      console.log(currentTag);
       if (!formValue.tagList.includes(currentTag.trim())) {
-        console.log(currentTag);
         dispatch(addTag(currentTag));
         setCurrentTag("");
         setDuplicated(false);
@@ -58,12 +51,12 @@ export default function FormAddArticle() {
     dispatch(deleteTag(id));
   }
 
-  const { onSubmit, isLoading } = useAddArticle(
-    formValue.tagList,
+  const { onSubmit, isLoading } = useAddArticle({
+    tagList: formValue.tagList,
     reset,
     modeForm,
     slug,
-  );
+  });
 
   if (isLoading) {
     <WrapperSpin />;

@@ -11,7 +11,6 @@ import Button from "@/shared/ui/Button/Button";
 import { isAuthorArticle } from "@/shared/utils/authorArticle";
 import { useDispatch } from "react-redux";
 import { setForm } from "@/features/AddArticle/articleFormSlice";
-import { IArticleRequestT } from "@/features/AddArticle/types";
 import { useRef, useState } from "react";
 import ModalDeletedArticle from "@/shared/ui/ModalDeletedArticle/ModalDeletedArticle";
 import WrapperSpin from "@/shared/ui/WrapperSpin/WrapperSpin";
@@ -29,13 +28,7 @@ export default function ArticleTitle({
   function setStateFormArticle(article: ArticleT | undefined) {
     if (!article) return;
 
-    const formData: IArticleRequestT = {
-      title: article.title,
-      description: article.description,
-      body: article.body,
-      tagList: article.tagList,
-    };
-    dispatch(setForm(formData));
+    dispatch(setForm(article));
     navigate(AppRoute.AddArticle, {
       state: { path: "Editing", slug: article?.slug },
     });
@@ -44,7 +37,6 @@ export default function ArticleTitle({
   if (!article) {
     return <WrapperSpin />;
   }
-
   return (
     <div className={styles.articleWrapper}>
       <div>

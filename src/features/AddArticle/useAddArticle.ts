@@ -9,12 +9,15 @@ import {
   IResponseError,
 } from "@/shared/utils/apiResponseError";
 
-export function useAddArticle(
-  tagList: string[],
-  reset: UseFormReset<IFormAddArticleT>,
-  modeForm: string,
-  slug: string | undefined,
-) {
+interface IUseAddArticleParams {
+  tagList: string[];
+  reset: UseFormReset<IFormAddArticleT>;
+  modeForm: string;
+  slug?: string;
+}
+
+export function useAddArticle(params: IUseAddArticleParams) {
+  const { modeForm, reset, tagList, slug } = params;
   const [addArticle, { isLoading }] = usePostAddArticleMutation();
   const [editArticle] = useEditArticleMutation();
   const navigate = useNavigate();
@@ -29,12 +32,9 @@ export function useAddArticle(
       };
 
       if (modeForm === "Editing" && slug) {
-        const response = await editArticle({ article, slug }).unwrap();
-
-        console.log(response);
+        await editArticle({ article, slug }).unwrap();
       } else {
-        const response = await addArticle(article).unwrap();
-        console.log(response);
+        await addArticle(article).unwrap();
       }
       reset();
       navigate(AppRoute.Home);

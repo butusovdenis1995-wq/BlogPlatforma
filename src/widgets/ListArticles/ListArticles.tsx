@@ -26,12 +26,16 @@ export default function ListArticles() {
   }
   return (
     <>
-      {data?.articles.map((article) => (
-        <WrapperCard key={article.slug} className={styles.articleWrapper}>
-          <ArticleTitle article={article} />
-        </WrapperCard>
-      ))}
-      <PaginationWrapper articlesCount={data?.articlesCount} />
+      {data && (
+        <>
+          {data.articles.map((article) => (
+            <WrapperCard key={article.slug} className={styles.articleWrapper}>
+              <ArticleTitle article={article} />
+            </WrapperCard>
+          ))}
+          <PaginationWrapper articlesCount={data?.articlesCount} />
+        </>
+      )}
     </>
   );
 }

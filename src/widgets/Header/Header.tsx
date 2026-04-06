@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { AppRoute } from "@/shared/config/route";
-import { isAuthorized } from "@/shared/utils/isAuthorized";
 import useLogAut from "@/shared/hooks/useLogAut";
+import { isAuthorized } from "@/shared/utils/isAuthorized";
+import { useDispatch } from "react-redux";
+import { clearForm } from "@/features/AddArticle/articleFormSlice";
 
 export default function Header() {
-  const user = JSON.parse(localStorage.getItem("user") ?? "null");
+  const user = isAuthorized();
+
   const { handleLogout } = useLogAut();
+  const dispatch = useDispatch();
+
   return (
     <header className={styles.header}>
       <Link className={styles.title} to={AppRoute.Home}>
         Realworld Blog
       </Link>
-      {!isAuthorized() && (
+      {!user && (
         <div>
           <Link className={styles.linkSignIn} to={AppRoute.SignIn}>
             Sign in
@@ -23,12 +28,13 @@ export default function Header() {
           </Link>
         </div>
       )}
-      {isAuthorized() && (
+      {user && (
         <div>
           <Link
             to={AppRoute.AddArticle}
             state={{ path: "Create" }}
             className={styles.createArticle}
+            onClick={() => dispatch(clearForm())}
           >
             Create article
           </Link>
