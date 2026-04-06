@@ -7,9 +7,6 @@ export const apiLike = baseApi.injectEndpoints({
       query: (slug) => ({
         url: `/articles/${slug}/favorite`,
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${getCookie().authToken}`,
-        },
       }),
       invalidatesTags: [{ type: "Articles", id: "LIST" }],
     }),

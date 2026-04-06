@@ -18,12 +18,7 @@ export const articleFormSlice = createSlice({
       state.body = action.payload.body;
       state.tagList = action.payload.tagList;
     },
-    clearForm: (state) => {
-      state.title = "";
-      state.description = "";
-      state.body = "";
-      state.tagList = [];
-    },
+    clearForm: () => initialState,
     addTag: (state, action) => {
       state.tagList.push(action.payload);
     },

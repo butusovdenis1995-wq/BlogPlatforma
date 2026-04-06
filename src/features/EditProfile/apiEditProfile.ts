@@ -1,5 +1,4 @@
 import { baseApi } from "@/shared/api/baseApi";
-import { getCookie } from "@/shared/utils/authToken";
 
 export const editProfileApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -8,9 +7,6 @@ export const editProfileApi = baseApi.injectEndpoints({
         url: "/user",
         method: "PUT",
         body: user,
-        headers: {
-          Authorization: `Bearer ${getCookie().authToken}`,
-        },
       }),
     }),
   }),

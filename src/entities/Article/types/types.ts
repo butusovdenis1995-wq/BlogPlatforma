@@ -21,3 +21,8 @@ export interface Articles {
   articles: ArticleT[];
   articlesCount: number;
 }
+
+export interface ArticleTitlePropsT {
+  article?: ArticleT;
+  showActions?: boolean;
+}

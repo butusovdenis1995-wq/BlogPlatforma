@@ -2,10 +2,9 @@ import styles from "./ArticleTitle.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { AppRoute, getRouteArticle } from "@/shared/config/route";
 import ButtonLike from "@/shared/ui/ButtonLike/ButtonLike";
-import { ArticleT } from "../types/types";
+import { ArticleT, ArticleTitlePropsT } from "../types/types";
 import { formatDate } from "@/shared/utils/formatDate";
 import Tag from "@/shared/ui/Tags/Tags";
-import { Spin } from "antd";
 import Logo from "../../../../public/Rectangle.png";
 import { isAuthorized } from "@/shared/utils/isAuthorized";
 import Button from "@/shared/ui/Button/Button";
@@ -13,22 +12,19 @@ import { isAuthorArticle } from "@/shared/utils/authorArticle";
 import { useDispatch } from "react-redux";
 import { setForm } from "@/features/AddArticle/articleFormSlice";
 import { IArticleRequestT } from "@/features/AddArticle/types";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ModalDeletedArticle from "@/shared/ui/ModalDeletedArticle/ModalDeletedArticle";
-
-interface ArticleTitleProps {
-  article: ArticleT | undefined;
-  showActions?: boolean;
-}
+import WrapperSpin from "@/shared/ui/WrapperSpin/WrapperSpin";
 
 export default function ArticleTitle({
   article,
   showActions = false,
-}: ArticleTitleProps) {
+}: ArticleTitlePropsT) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const buttonDeleteRef = useRef<HTMLButtonElement>(null!);
 
   function setStateFormArticle(article: ArticleT | undefined) {
     if (!article) return;
@@ -46,11 +42,7 @@ export default function ArticleTitle({
   }
 
   if (!article) {
-    return (
-      <div className={styles.articleWrapper}>
-        <Spin size="large" className={styles.spin} />
-      </div>
-    );
+    return <WrapperSpin />;
   }
 
   return (
@@ -81,12 +73,13 @@ export default function ArticleTitle({
         isAuthorArticle(article?.author.username) &&
         showActions && (
           <div className={styles.button}>
-            <Button
+            <button
               onClick={() => setIsOpen(true)}
               className={styles.buttonDelete}
+              ref={buttonDeleteRef}
             >
               Delete
-            </Button>
+            </button>
             <Button
               onClick={() => setStateFormArticle(article)}
               className={styles.buttonEdit}
@@ -99,6 +92,7 @@ export default function ArticleTitle({
         isOpen={isOpen}
         slug={article.slug}
         setIsOpen={setIsOpen}
+        buttonDeleteRef={buttonDeleteRef}
       />
     </div>
   );
