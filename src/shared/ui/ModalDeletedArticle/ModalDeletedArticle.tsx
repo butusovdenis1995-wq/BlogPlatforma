@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import styles from "./ModalDeletedArticle.module.scss";
 import Warning from "../../../../public/Vector.png";
 import useDeleteArticle from "@/features/AddArticle/useDeleteArticle";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface ModalDeletedArticleProps {
   isOpen: boolean;
@@ -23,15 +23,30 @@ export default function ModalDeletedArticle({
   });
   const { handleDelete } = useDeleteArticle();
 
-  useEffect(() => {
+  const updatePosition = useCallback(() => {
     if (buttonDeleteRef.current) {
       const rect = buttonDeleteRef.current.getBoundingClientRect();
       setCoords({
-        top: rect.top + window.scrollY, // Позиция снизу кнопки
+        top: rect.top + window.scrollY,
         left: rect.right + window.scrollX,
       });
     }
-  });
+  }, [buttonDeleteRef]);
+
+  useEffect(() => {
+    if (isOpen) {
+      updatePosition();
+
+      // Обновляем позицию при скролле и ресайзе
+      window.addEventListener("resize", updatePosition);
+      window.addEventListener("scroll", updatePosition);
+
+      return () => {
+        window.removeEventListener("resize", updatePosition);
+        window.removeEventListener("scroll", updatePosition);
+      };
+    }
+  }, [isOpen, updatePosition]);
 
   if (isOpen) {
     return ReactDOM.createPortal(
