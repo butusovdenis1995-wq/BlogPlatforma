@@ -1,6 +1,7 @@
 interface IResponseErrors {
   email: string;
   username: string;
+  "email or password"?: string;
 }
 
 interface IResponseDataError {
