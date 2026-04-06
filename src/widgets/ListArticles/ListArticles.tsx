@@ -6,6 +6,7 @@ import styles from "./ListArticles.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "@/shared/config/store";
 import { Spin } from "antd";
+import WrapperSpin from "@/shared/ui/WrapperSpin/WrapperSpin";
 
 const limit = 5;
 
@@ -19,7 +20,7 @@ export default function ListArticles() {
   });
 
   if (isLoading) {
-    return <Spin size="large" />;
+    return <WrapperSpin />;
   }
   if (isError) {
     <div>ошибка загрузки статей</div>;
