@@ -5,7 +5,6 @@ import WrapperCard from "@/shared/ui/WrapperCard";
 import styles from "./ListArticles.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "@/shared/config/store";
-import { Spin } from "antd";
 import WrapperSpin from "@/shared/ui/WrapperSpin/WrapperSpin";
 
 const limit = 5;

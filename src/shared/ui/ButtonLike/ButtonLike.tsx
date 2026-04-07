@@ -20,7 +20,7 @@ export default function ButtonLike({ quantityLike, slug }: ButtonLikeProps) {
       <button
         onClick={() => toggleLike(slug)}
         className={styles.buttonLike}
-        disabled={!isAuthorized()}
+        disabled={!!isAuthorized()}
       >
         <Heart
           className={styles.heart}

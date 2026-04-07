@@ -8,7 +8,8 @@ export default function useLogAut() {
   const navigate = useNavigate();
   function handleLogout() {
     localStorage.removeItem("user");
-    document.cookie = `authToken=${new Date(0)}`;
+    document.cookie =
+      "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     dispatch(logout());
     navigate(AppRoute.SignIn);
   }

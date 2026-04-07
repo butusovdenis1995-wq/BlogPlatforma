@@ -61,7 +61,7 @@ export default function ArticleTitle({
         <span className={styles.date}>{formatDate(article.createdAt)}</span>
       </div>
       <img src={Logo} alt="Author" />
-      {isAuthorized() &&
+      {!!isAuthorized() &&
         isAuthorArticle(article?.author.username) &&
         showActions && (
           <div className={styles.button}>

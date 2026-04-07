@@ -11,6 +11,7 @@ import {
   apiResponseError,
   IResponseError,
 } from "@/shared/utils/apiResponseError";
+import { getCookie } from "@/shared/utils/authToken";
 
 export default function SignIn() {
   const {
@@ -27,7 +28,6 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   const [authUser] = apiAuth.usePostAuthMutation();
-
   async function handleFormSubmit(data: IUserAuth) {
     try {
       const result = await authUser(data).unwrap();
