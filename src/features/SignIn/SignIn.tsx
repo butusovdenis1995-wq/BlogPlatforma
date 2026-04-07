@@ -11,7 +11,6 @@ import {
   apiResponseError,
   IResponseError,
 } from "@/shared/utils/apiResponseError";
-import { getCookie } from "@/shared/utils/authToken";
 
 export default function SignIn() {
   const {
