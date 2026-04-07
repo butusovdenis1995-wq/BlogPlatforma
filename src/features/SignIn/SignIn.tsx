@@ -11,6 +11,7 @@ import {
   apiResponseError,
   IResponseError,
 } from "@/shared/utils/apiResponseError";
+import WrapperSpin from "@/shared/ui/WrapperSpin/WrapperSpin";
 
 export default function SignIn() {
   const {
@@ -26,7 +27,7 @@ export default function SignIn() {
   });
   const navigate = useNavigate();
 
-  const [authUser] = apiAuth.usePostAuthMutation();
+  const [authUser, { isLoading }] = apiAuth.usePostAuthMutation();
   async function handleFormSubmit(data: IUserAuth) {
     try {
       const result = await authUser(data).unwrap();
@@ -45,6 +46,10 @@ export default function SignIn() {
       apiResponseError(error as IResponseError);
     }
   }
+  if (isLoading) {
+    return <WrapperSpin />;
+  }
+
   return (
     <WrapperCard className={styles.signInWrapper}>
       <Form onSubmit={handleSubmit(handleFormSubmit)}>
