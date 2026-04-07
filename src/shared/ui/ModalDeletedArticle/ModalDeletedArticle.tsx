@@ -24,7 +24,6 @@ export default function ModalDeletedArticle({
   const { handleDelete } = useDeleteArticle();
 
   const updatePosition = useCallback(() => {
-    console.log("updatePosition");
     if (buttonDeleteRef.current) {
       const rect = buttonDeleteRef.current.getBoundingClientRect();
       setCoords({
@@ -35,7 +34,6 @@ export default function ModalDeletedArticle({
   }, [buttonDeleteRef]);
 
   useEffect(() => {
-    console.log("useEffect");
     if (isOpen) {
       updatePosition();
 

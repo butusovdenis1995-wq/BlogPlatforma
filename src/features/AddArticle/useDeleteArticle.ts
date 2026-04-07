@@ -11,9 +11,8 @@ export default function useDeleteArticle() {
   const [deleteArticle] = useDeleteArticleMutation();
   async function handleDelete(slug: string) {
     try {
-      const response = await deleteArticle(slug);
+      await deleteArticle(slug);
       navigate(AppRoute.Home);
-      console.log(response);
     } catch (error) {
       apiResponseError(error as IResponseError);
     }

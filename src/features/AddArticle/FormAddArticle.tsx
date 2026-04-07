@@ -36,7 +36,6 @@ export default function FormAddArticle() {
 
   function addTags() {
     if (currentTag.trim()) {
-      console.log(currentTag);
       if (!formValue.tagList.includes(currentTag.trim())) {
         dispatch(addTag(currentTag));
         setCurrentTag("");

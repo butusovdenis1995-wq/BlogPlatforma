@@ -8,7 +8,6 @@ import { clearForm } from "@/features/AddArticle/articleFormSlice";
 
 export default function Header() {
   const user = isAuthorized();
-  console.log(user);
   const { handleLogout } = useLogAut();
   const dispatch = useDispatch();
 
