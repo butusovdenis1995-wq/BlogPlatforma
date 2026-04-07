@@ -14,13 +14,14 @@ export default function ButtonLike({ quantityLike, slug }: ButtonLikeProps) {
   const { toggleLike } = useLikeButton();
   const favorited = useSelector((state: RootState) => state.likes.favorited);
   const isFavorited = favorited?.includes(slug);
+  console.log(!!isAuthorized());
 
   return (
     <div className={styles.wrapperLike}>
       <button
         onClick={() => toggleLike(slug)}
         className={styles.buttonLike}
-        disabled={!!isAuthorized()}
+        disabled={!isAuthorized()}
       >
         <Heart
           className={styles.heart}
